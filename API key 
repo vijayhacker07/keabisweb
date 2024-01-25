@@ -1,0 +1,23 @@
+from openai import OpenAI
+# Set your API key here
+client = OpenAI(
+  api_key='your api key',  # this is also the default, it can be omitted
+)
+
+# Define your prompt
+prompt_text = "Write a poem on me"
+
+# Set the temperature value
+temperature_value = 1.5  # Change this value as needed
+
+# Create completion
+response = client.completions.create(
+  # engine="text-davinci-035",
+  model="text-davinci-003",
+  prompt = prompt_text + "\n",
+  temperature=temperature_value,
+  max_tokens= 150
+)
+
+# Display the completion
+print(response.choices[0].text.strip())
